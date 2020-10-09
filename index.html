@@ -1,0 +1,14 @@
+<div id="dis"></div>
+<button onclick="ca(-1)">-</button>
+<button onclick="ca(1)">+</button>
+<script>
+var y = 0;
+document.getElementById("dis").innerHTML = "$" + y;
+function ca(x) {
+y += x;
+wr();
+}
+function wr() {
+document.getElementById("dis").innerHTML = "$" + y;
+}
+</script>
