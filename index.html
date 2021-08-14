@@ -7,76 +7,36 @@
         <link rel="stylesheet" href="new.css">
         <script src="js.js"></script>
         <style>
-             body {
-    margin: 0;
-    padding: 0;
-}
-.container {
-    border: 1px solid black;
-    display: grid;
-    grid-template-columns: repeat(4, 200px);
-    grid-template-rows: auto;
-    column-gap: .3rem;
-    row-gap: .3rem;
-    grid-template-areas: 
-    "header header header header"
-    "main main main sidebar"
-    "footer footer footer footer"
-    ;
-    justify-content: center;
-    
-}
-.item-a {
-    background-color: aqua;
-    grid-area: header;
-}
-.item-b {
-    background-color: rgb(255, 0, 85);
-    grid-area: main;
-}
-.item-c {
-    background-color: rgb(229, 255, 0);
-    grid-area: sidebar;
-}
-.item-d {
-    background-color: rgb(21, 255, 0);
-    grid-area: footer;
-}
-@media only screen and (max-width: 760px) {
-    .container {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        grid-template-areas: 
-        "header"
-        "main"
-        "sidebar"
-        "footer"
-        ;
+    td {
+        text-align: center;
+        vertical-align: middle;
+        padding: 0.5em;
     }
-    
-}   
         </style>    
     </head>
     <body>
-        <div class="container">
-            <div class="item-a">A</div>
-            <div class="item-b">B</div>
-            <div id="output" class="item-c">C</div>
-            <div class="item-d">D</div>
-        </div>
-        <div id="demo"></div>
+    <table id="out" border="1"></table>
     <script>
-        var fotos = new Array();
-        for (var counter = 0; counter < 12; counter++) {
-            fotos[counter] = "foto-" + (counter+1);
-        }        
-        
-        for (var contador = 0; contador < fotos.length; contador++) {
-            newList = document.createElement("p");
-            document.querySelector("#demo").appendChild(newList);
-            newList.innerHTML = fotos[contador] + '.jpg';
+    number = prompt("Enter number greater than 0: ");
+    total = number;
+    binary = [];
+    s = "";
+    for (x = 1; number >= x; x += x) {
+        binary.push(x);
+    }
+    binary.reverse();
+    binary.forEach(
+        function(item, index, array) {
+            if (number < item) {
+                s += "<tr><td>0</td><td>X</td><td>" + item + "</td></tr>";
+            } else if (number >= item) {
+                s += "<tr><td>1</td><td>X</td><td>" + item + "</td></tr>";
+                number -= item;
+            }
         }
-
+    )
+    s += "<tr><td colspan=\"3\">" + total + "</td></tr>";
+    document.getElementById('out').innerHTML = s;
     </script>
     </body>
 </html>
